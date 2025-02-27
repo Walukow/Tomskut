@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body
-x-data="{ isSmallScreen: window.innerWidth <= 1000 }" 
+x-data="{ isSmallScreen: window.innerWidth <= 1100 }" 
 x-init="
     window.addEventListener('resize', () => {
-        isSmallScreen = window.innerWidth <= 1000;
+        isSmallScreen = window.innerWidth <= 1100;
     }),
 "
 >
@@ -74,12 +74,12 @@ x-init="
 
     <div class="pt-12 bg-black text-white lg:grid lg:grid-cols-3 min-h-[825px]">
         <div class="relative lg:top-32 lg:left-28 top-20 lg:m-0 m-5">
-            <h1 class="lg:text-8xl text-7xl text-lime-600 font-semibold">TOMSKUT</h1>
+            <h1 class="text-7xl text-lime-600 font-semibold">TOMSKUT</h1>
             <div class="flex gap-1 items-center my-2.5">
-                <h2 class="lg:text-8xl text-6xl block row-span-2 self-start lg:mt-0 mt-1">Make</h2>
+                <h2 class="text-6xl block row-span-2 self-start lg:mt-0 mt-1">Make</h2>
                 <div class="flex flex-col">
-                    <p class="lg:text-4xl text-2xl block">Your Hair,</p>
-                    <p class="lg:text-4xl text-2xl block">Great Again</p>
+                    <p class="text-2xl block">Your Hair,</p>
+                    <p class="text-2xl block">Great Again</p>
                 </div>
             </div>
             
