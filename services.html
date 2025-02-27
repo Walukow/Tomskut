@@ -180,19 +180,19 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
 <footer class="bg-[#010100] text-white grid lg:grid-cols-4 lg:gap-0 gap-8 items-start justify-center p-12" x-data="{
     links: {
         'Home': [
-            { text: 'Intro', url: '/#top' },
-            { text: 'Services', url: '/#services' },
-            { text: 'Location', url: '/#location' }
+            { text: 'Intro', url: 'index.html#top' },
+            { text: 'Services', url: 'index.html#services' },
+            { text: 'Location', url: 'index.html#location' }
         ],
         'About': [
-            { text: 'The Owner', url: '/about.html#top' },
-            { text: 'History', url: '/about.html#history' },
-            { text: 'Barbers', url: '/about.html#barbers' }
+            { text: 'The Owner', url: 'about.html#top' },
+            { text: 'History', url: 'about.html#history' },
+            { text: 'Barbers', url: 'about.html#barbers' }
         ],
         'Services': [
-            { text: 'Haircut', url: '/services.html#haircut' },
-            { text: 'Shoes & Care', url: '/services.html#shoes' },
-            { text: 'Apparel', url: '/services.html#apparel' }
+            { text: 'Haircut', url: 'services.html#haircut' },
+            { text: 'Shoes & Care', url: 'services.html#shoes' },
+            { text: 'Apparel', url: 'services.html#apparel' }
         ],
         'Social Media': [
             { text: '@tomskutbarberhouse', url: 'https://www.instagram.com/tomskutbarberhousse/' },
@@ -233,10 +233,10 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
             <div x-data="{show: false}" class="border-b border-white p-2.5">
                 <div @click="show = !show" class="flex justify-between cursor-pointer">
                     <p x-text="title" class="inline"></p>
-                    <svg x-show="!show" class="w-6 h-6 inline" xmlns="http://www.w3.Rporg/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg x-show="!show" class="w-6 h-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
                     </svg>
-                    <svg x-show="show" class="w-6 h-6 inline" xmlns="http://www.w3.Rporg/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg x-show="show" class="w-6 h-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/>
                     </svg>   
                 </div>
