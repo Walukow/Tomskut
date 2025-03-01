@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 <body
 x-data="{ isSmallScreen: window.innerWidth <Rp= 1000 }" 
@@ -114,10 +116,10 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
         
         <section class="py-12">
-            <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
+            <h2 data-aos="fade-down" class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
                 Haircut <span class="text-lime-600">Services</span>
             </h2>
-            <div class="bg-white p-6 shadow-lg rounded-lg">
+            <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-6 shadow-lg rounded-lg">
                 <div>
                     <h3 class="text-lime-600 font-bold lg:text-xl mb-4 border-b-2 border-lime-600 pb-2">Haircut & Shaving</h3>
                     <ul class="text-lg text-gray-700">
@@ -172,10 +174,10 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
             </div>
         </section>
         <section class="py-24" id="shoes">
-            <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
+            <h2 data-aos="fade-up" class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
                 Shoes & <span class="text-lime-600">Care</span>
             </h2>
-            <div class="bg-white p-6 shadow-lg rounded-lg">
+            <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-6 shadow-lg rounded-lg">
                 <h3 class="text-lime-600 font-bold lg:text-xl mb-4 border-b-2 border-lime-600 pb-2">Shoes</h3>
                 <ul class="text-lg text-gray-700">
                     <li class="flex text-xs lg:text-base justify-between border-b py-3 hover:text-lime-600 transition">Deep Cleaning<span class="font-semibold">Rp30.000</span></li>
@@ -188,10 +190,10 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </section>
 
         <section class="py-24" id="apparel">
-            <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
+            <h2 data-aos="fade-up" class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
                 Exclusive <span class="text-lime-600">Apparel</span>
             </h2>
-            <div class="bg-white p-6 shadow-lg rounded-lg">
+            <div data-aos="fade-up" data-aos-delay="200" class="bg-white p-6 shadow-lg rounded-lg">
                 <h3 class="text-lime-600 font-bold lg:text-xl mb-4 border-b-2 border-lime-600 pb-2">?????</h3>
                 <ul class="text-lg text-gray-700">
                     <li class="flex text-xs lg:text-base justify-between border-b py-3 hover:text-lime-600 transition">???? <span class="font-semibold">???</span></li>
@@ -284,6 +286,18 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </template>
     </div>
 </footer>
+
+
+
+
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+        AOS.init();
+</script>
 
 
 
