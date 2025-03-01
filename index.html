@@ -26,21 +26,36 @@ x-init="
 "
 >
 
-    <!-- Nav -->
 
-    <nav x-data="{ open: false, isAtTop: true }" 
+    <nav x-data="{ 
+        open: false, 
+        isAtTop: true, 
+        currentPage: window.location.pathname.split('/').pop().split('.')[0] 
+    }"
     x-init="window.addEventListener('scroll', () => { isAtTop = (window.scrollY === 0); })"
     class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
-    :class="isAtTop ? 'bg-black text-lime-600' : 'bg-white text-black'">
+    :class="isAtTop ? 'bg-black text-lime-600' : 'bg-white text-black'"
+>
+
         <div class="px-4 sm:px-6">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center font-[Anton] text-2xl">
                     <a href="index.html">TOMSKUT</a>
                 </div>
                 <div class="hidden flex-grow sm:flex justify-center space-x-8 sm:-my-px">
-                    <a href="index.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Home</a>
-                    <a href="about.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">About</a>
-                    <a href="services.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Services</a>
+                    <a href="index.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                    :class="{'border-b-2': currentPage === 'index', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                    Home
+                </a>
+                <a href="about.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                    :class="{'border-b-2': currentPage === 'about', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                    About
+                </a>
+                <a href="services.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                    :class="{'border-b-2': currentPage === 'services', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                    Services
+                </a>
+                
                 </div>
                 <div class="flex gap-2 items-center lg:m-0 mr-5">
                     <a href="https://api.whatsapp.com/send?phone=6281392624483&text=hallo%20mas%20saya%20mau%20cukur%20nih,%20apakah%20antrian%20aman?%20">
@@ -63,9 +78,28 @@ x-init="
         </div>
         <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-10" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-10" class="sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Home</a>
-                <a href="about.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">About</a>
-                <a href="services.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Services</a>
+                <a href="index.html" 
+                class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+                :class="{'border-l-4 font-bold': currentPage === 'index', 
+                         'text-lime-600 border-lime-600': isAtTop, 
+                         'text-black border-black': !isAtTop}">
+                Home
+            </a>
+            <a href="about.html" 
+                class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+                :class="{'border-l-4 font-bold': currentPage === 'about', 
+                         'text-lime-600 border-lime-600': isAtTop, 
+                         'text-black border-black': !isAtTop}">
+                About
+            </a>
+            <a href="services.html" 
+                class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+                :class="{'border-l-4 font-bold': currentPage === 'services', 
+                         'text-lime-600 border-lime-600': isAtTop, 
+                         'text-black border-black': !isAtTop}">
+                Services
+            </a>
+            
             </div>
         </div>
     </nav>
@@ -152,20 +186,16 @@ x-init="
     
 
     <div class="py-24 bg-stone-100" id="location">
-        <!-- Judul dengan efek hover -->
         <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-8 font-[Anton] transition ease-in-out duration-300">
             <span class="text-lime-600">Tomskut's</span> Locations & Schedule
         </h2>
         
-        <!-- Kata-kata singkat -->
         <p class="text-center text-gray-600 text-lg italic mb-6">
             Come Visit Us and Get the Best Experience!
         </p>
     
-        <!-- Container Map dan Jadwal -->
         <div class="max-w-6xl mx-auto p-4">
             <div class="bg-black rounded-2xl overflow-hidden shadow-lg lg:flex lg:space-x-4 border-2">
-                <!-- Map -->
                 <div class="lg:w-2/3">
                     <iframe class="w-full h-[400px] md:h-[500px] rounded-none lg:rounded-l-2xl" 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.8505843478124!2d109.40425787499642!3d-6.908463393090954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fdbd19d5136f3%3A0xa138cc57a015c525!2sTomskut%20Barberhouse!5e0!3m2!1sid!2sid!4v1739851378806!5m2!1sid!2sid" 
@@ -173,7 +203,6 @@ x-init="
                     </iframe>
                 </div>
     
-                <!-- Jadwal Buka -->
                 <div class="bg-black p-6 lg:w-1/3 text-white">
                     <h3 class="text-lime-600 font-bold text-xl mb-4">Operating Hours</h3>
                     <ul class="space-y-2 text-sm">
@@ -261,7 +290,6 @@ x-init="
     </div>
 
     
-    <!-- Footer -->
     <footer class="bg-[#010100] text-white grid lg:grid-cols-4 lg:gap-0 gap-8 items-start justify-center p-12" x-data="{
         links: {
             'Home': [
@@ -286,7 +314,6 @@ x-init="
             ]
         }
     }">
-        <!-- Logo dan Copyright -->
         <div class="shrink-0 lg:col-span-2 flex items-center lg:text-3xl text-xl lg:font-semibold font-serif justify-self-center w-full max-w-xs flex-col">
             <a href="index.html" class="flex text-lime-600 items-center">
                 <img src="storage/tomskut.png" class="w-20" alt="Tomskut Logo">
@@ -296,7 +323,6 @@ x-init="
             </p>
         </div>
     
-        <!-- Versi Desktop -->
         <div class="hidden sm:grid lg:grid-cols-4 grid-cols-2 lg:col-start-3 lg:col-span-2 gap-8 text-start lg:text-base text-sm">
             <template x-for="(items, title) in links" :key="title">
                 <div>
@@ -312,7 +338,6 @@ x-init="
             </template>
         </div>
     
-        <!-- Versi Mobile -->
         <div class="lg:hidden w-full">
             <template x-for="(items, title) in links" :key="title">
                 <div x-data="{show: false}" class="border-b border-white p-2.5">

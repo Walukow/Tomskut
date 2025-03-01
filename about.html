@@ -27,22 +27,37 @@ x-init="
 >
 
 
-<!-- Nav -->
 
 
-<nav x-data="{ open: false, isAtTop: true }" 
+<nav x-data="{ 
+    open: false, 
+    isAtTop: true, 
+    currentPage: window.location.pathname.split('/').pop().split('.')[0] 
+}"
 x-init="window.addEventListener('scroll', () => { isAtTop = (window.scrollY === 0); })"
 class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
-:class="isAtTop ? 'bg-black text-lime-600' : 'bg-white text-black'">
+:class="isAtTop ? 'bg-black text-lime-600' : 'bg-white text-black'"
+>
+
     <div class="px-4 sm:px-6">
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center font-[Anton] text-2xl">
                 <a href="index.html">TOMSKUT</a>
             </div>
             <div class="hidden flex-grow sm:flex justify-center space-x-8 sm:-my-px">
-                <a href="index.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Home</a>
-                <a href="about.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">About</a>
-                <a href="services.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Services</a>
+                <a href="index.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                :class="{'border-b-2': currentPage === 'index', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                Home
+            </a>
+            <a href="about.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                :class="{'border-b-2': currentPage === 'about', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                About
+            </a>
+            <a href="services.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
+                :class="{'border-b-2': currentPage === 'services', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                Services
+            </a>
+            
             </div>
             <div class="flex gap-2 items-center lg:m-0 mr-5">
                 <a href="https://api.whatsapp.com/send?phone=6281392624483&text=hallo%20mas%20saya%20mau%20cukur%20nih,%20apakah%20antrian%20aman?%20">
@@ -65,9 +80,28 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
     </div>
     <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-10" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-10" class="sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <a href="index.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Home</a>
-            <a href="about.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">About</a>
-            <a href="services.html" class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out" :class="isAtTop ? 'text-lime-600 border-lime-600' : 'text-black border-black'">Services</a>
+            <a href="index.html" 
+            class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+            :class="{'border-l-4 font-bold': currentPage === 'index', 
+                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-black border-black': !isAtTop}">
+            Home
+        </a>
+        <a href="about.html" 
+            class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+            :class="{'border-l-4 font-bold': currentPage === 'about', 
+                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-black border-black': !isAtTop}">
+            About
+        </a>
+        <a href="services.html" 
+            class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
+            :class="{'border-l-4 font-bold': currentPage === 'services', 
+                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-black border-black': !isAtTop}">
+            Services
+        </a>
+        
         </div>
     </div>
 </nav>
@@ -76,17 +110,13 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
 
     
 <div class="w-full overflow-x-hidden" id="owner">
-    <!-- Profile Owner Section dengan background black -->
     <section class="w-full bg-black min-h-screen flex items-center py-20 overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row justify-center gap-10 items-center">
-            <!-- Gambar Owner -->
             <div class="w-full lg:w-1/3 flex justify-center">
                 <img src="storage/owner.jpg" alt="Owner" class="rounded-xl shadow-lg w-full h-full object-cover max-w-xs">
             </div>
-            <!-- Konten Teks -->
             <div class="w-full lg:w-2/3 text-white text-center sm:text-left">
                 <h3 class="text-5xl text-lime-600 font-semibold">Meet the Owner</h3>
-                <!-- Nama Owner -->
                 <p class="mt-2 text-xl font-bold text-lime-400">Mastom</p>
                 <p class="mt-4 text-lg">
                     <span class="text-lime-600">Tomskut's</span> Barberhouse was founded by <span class="text-lime-600">Mastom</span>, a passionate barber with nearly <span class="font-semibold">8 Years</span> of experience in the industry.
@@ -95,7 +125,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                     For the latest updates and behind-the-scenes looks at his work, follow him on 
                     <a href="https://instagram.com/mastomsekuts" target="_blank" class="text-lime-400 underline hover:text-lime-300">Instagram</a>.
                 </p>
-                <!-- Tambahan Elemen untuk Mengisi Kekosongan -->
                 <div class="mt-8">
                     <p class="text-lg italic text-gray-200">"Make A Story So Far."</p>
                     <p class="mt-2 text-sm text-gray-400">- Mastom</p>
@@ -109,14 +138,12 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </div>            
     </section>
     
-    <!-- Sejarah Tomskut Section -->
     <section class="w-full bg-slate-100 py-24 overflow-x-hidden" id="history">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
                 History of <span class="text-lime-600">Tomskut's</span> Barberhouse
             </h2>
             <div class="lg:px-28 pt-10 flex lg:flex-row flex-col-reverse items-center gap-10">
-                <!-- Teks Sejarah -->
                 <div class="lg:w-1/2 p-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
                         <span class="text-lime-600">Tomskut's</span> Barberhouse was founded in <span class="font-semibold">2019</span> in the heart of <span class="font-semibold">Pemalang</span>, originally located at Perum Griya Mulyoharjo Permai and now at <span class="text-lime-600">Ruko perum Griya Taman mulia</span>.
@@ -125,7 +152,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                         <span class="text-lime-600">Tomskut</span> mission is to provide quality <span class="font-semibold">haircut</span>, great service, and a <span class="font-semibold">relaxing</span> atmosphere for all our clients, making us one of the most <span class="font-semibold">distinctive</span> and <span class="font-semibold">trusted</span> barbershops for the people of <span class="font-semibold">Pemalang</span> .
                     </p>
                 </div>
-                <!-- Gambar Sejarah -->
                 <div class="lg:w-1/2 w-full flex justify-center">
                     <img class="rounded-xl shadow-lg object-cover w-full max-w-md" src="storage/bg3.jpg" alt="History of Tomskut's">
                 </div>
@@ -133,14 +159,12 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </div>
     </section>
     
-    <!-- Barbermen Section -->
     <section class="w-full bg-stone-100 py-24 overflow-x-hidden" id="barbers">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <h2 class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
                 Meet <span class="text-lime-600">Tomskut's</span> Barbers
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-                <!-- Barber 2 -->
                 <a href="https://instagram.com/mastomsekuts" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/owner.jpg" alt="Barber 2" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
                     <h4 class="text-xl text-lime-600 font-semibold">Mastom</h4>
@@ -148,7 +172,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                         With over <span class="font-semibold">8 years</span> of experience, <span class="text-lime-600">Mastom</span> is known for their <span class="font-semibold">precision</span> and attention to detail. They specialize in <span class="font-semibold">modern haircut</span> and <span class="font-semibold">classic style</span>.
                     </p>
                 </a>
-                <!-- Barber 3 -->
                 <a href="https://instagram.com/alvin.fatihin" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/barbers2.jpg" alt="Barber 3" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
                     <h4 class="text-xl text-lime-600 font-semibold">Alvin Fatihin</h4>
@@ -156,7 +179,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                         With a passion for grooming, <span class="text-lime-600">Alvin</span> combines technical <span class="font-semibold">skill</span> with a relaxed, <span class="font-semibold">friendly vibe</span> that ensures every client feels at ease.
                     </p>
                 </a>
-                <!-- Barber 1 -->
                 <a href="" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/barbers1.jpg" alt="Barber 1" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
                     <h4 class="text-xl text-lime-600 font-semibold">Jati Aditya</h4>
@@ -171,7 +193,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
 
 
 
-<!-- Footer -->
 <footer class="bg-[#010100] text-white grid lg:grid-cols-4 lg:gap-0 gap-8 items-start justify-center p-12" x-data="{
     links: {
         'Home': [
@@ -196,7 +217,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         ]
     }
 }">
-    <!-- Logo dan Copyright -->
     <div class="shrink-0 lg:col-span-2 flex items-center lg:text-3xl text-xl lg:font-semibold font-serif justify-self-center w-full max-w-xs flex-col">
         <a href="index.html" class="flex text-lime-600 items-center">
             <img src="storage/tomskut.png" class="w-20" alt="Tomskut Logo">
@@ -206,7 +226,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </p>
     </div>
 
-    <!-- Versi Desktop -->
     <div class="hidden sm:grid lg:grid-cols-4 grid-cols-2 lg:col-start-3 lg:col-span-2 gap-8 text-start lg:text-base text-sm">
         <template x-for="(items, title) in links" :key="title">
             <div>
@@ -222,7 +241,6 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
         </template>
     </div>
 
-    <!-- Versi Mobile -->
     <div class="lg:hidden w-full">
         <template x-for="(items, title) in links" :key="title">
             <div x-data="{show: false}" class="border-b border-white p-2.5">
