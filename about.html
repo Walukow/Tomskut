@@ -11,12 +11,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="icon" href="storage/tomskut.png" type="image/png">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind v4 -->
+    <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Tailwind v4 -->
+    <!-- <style type="text/tailwindcss">
+        @theme {
+            --color-first-50:  #f7fee7; /* first-50 */
+            --color-first-100: #ecfccb; /* first-100 */
+            --color-first-200: #d9f99d; /* first-200 */
+            --color-first-300: #bef264; /* first-300 */
+            --color-first-400: #a3e635; /* first-400 */
+            --color-first-500: #84cc16; /* first-500 */
+            --color-first-600: #65a30d; /* first-600 */
+            --color-first-700: #4d7c0f; /* first-700 */
+            --color-first-800: #3f6212; /* first-800 */
+            --color-first-900: #365314; /* first-900 */
+            --color-first-950: #1a2e05; /* first-950 */
+        }
+    </style> -->    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        first: {
+                            50:  '#f7fee7', // lime-50
+                            100: '#ecfccb', // lime-100
+                            200: '#d9f99d', // lime-200
+                            300: '#bef264', // lime-300
+                            400: '#a3e635', // lime-400
+                            500: '#84cc16', // lime-500
+                            600: '#65a30d', // lime-600
+                            700: '#4d7c0f', // lime-700
+                            800: '#3f6212', // lime-800
+                            900: '#365314', // lime-900
+                            950: '#1a2e05', // lime-950
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
 </head>
 <body
 x-data="{ isSmallScreen: window.innerWidth <= 1000 }" 
@@ -37,7 +79,7 @@ x-init="
 }"
 x-init="window.addEventListener('scroll', () => { isAtTop = (window.scrollY === 0); })"
 class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
-:class="isAtTop ? 'bg-black text-lime-600' : 'bg-white text-black'"
+:class="isAtTop ? 'bg-black text-first-600' : 'bg-white text-black'"
 >
 
     <div class="px-4 sm:px-6">
@@ -47,22 +89,22 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
             </div>
             <div class="hidden flex-grow sm:flex justify-center space-x-8 sm:-my-px">
                 <a href="index.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
-                :class="{'border-b-2': currentPage === 'index', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                :class="{'border-b-2': currentPage === 'index', 'border-first-600 text-first-600': isAtTop, 'border-black text-black': !isAtTop}">
                 Home
             </a>
             <a href="about.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
-                :class="{'border-b-2': currentPage === 'about', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                :class="{'border-b-2': currentPage === 'about', 'border-first-600 text-first-600': isAtTop, 'border-black text-black': !isAtTop}">
                 About
             </a>
             <a href="services.html" class="py-7 border-0 flex items-center hover:border-b-2 transition ease-in-out"
-                :class="{'border-b-2': currentPage === 'services', 'border-lime-600 text-lime-600': isAtTop, 'border-black text-black': !isAtTop}">
+                :class="{'border-b-2': currentPage === 'services', 'border-first-600 text-first-600': isAtTop, 'border-black text-black': !isAtTop}">
                 Services
             </a>
             
             </div>
             <div class="flex gap-2 items-center lg:m-0 mr-5">
                 <a href="https://api.whatsapp.com/send?phone=6281392624483&text=hallo%20mas%20saya%20mau%20cukur%20nih,%20apakah%20antrian%20aman?%20">
-                    <button x-bind:class="isAtTop ? 'border-lime-600' : 'border-black'" 
+                    <button x-bind:class="isAtTop ? 'border-first-600' : 'border-black'" 
                             class="inline-flex cursor-pointer items-center px-4 py-2 bg-transparent border rounded-md font-semibold text-xs uppercase tracking-widest shadow-sm hover:text-gray-500 hover:border-gray-500 focus:text-slate-500 disabled:opacity-25">
                         WhatsApp
                     </button>
@@ -84,21 +126,21 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
             <a href="index.html" 
             class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
             :class="{'border-l-4 font-bold': currentPage === 'index', 
-                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-first-600 border-first-600': isAtTop, 
                      'text-black border-black': !isAtTop}">
             Home
         </a>
         <a href="about.html" 
             class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
             :class="{'border-l-4 font-bold': currentPage === 'about', 
-                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-first-600 border-first-600': isAtTop, 
                      'text-black border-black': !isAtTop}">
             About
         </a>
         <a href="services.html" 
             class="block w-full ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out"
             :class="{'border-l-4 font-bold': currentPage === 'services', 
-                     'text-lime-600 border-lime-600': isAtTop, 
+                     'text-first-600 border-first-600': isAtTop, 
                      'text-black border-black': !isAtTop}">
             Services
         </a>
@@ -117,21 +159,21 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                 <img data-aos="fade-in" src="storage/owner.jpg" alt="Owner" class="rounded-xl shadow-lg w-full h-full object-cover max-w-xs">
             </div>
             <div class="w-full lg:w-2/3 text-white text-center sm:text-left">
-                <h3 class="text-5xl text-lime-600 font-semibold">Meet the Owner</h3>
-                <p class="mt-2 text-xl font-bold text-lime-400">Mastom</p>
+                <h3 class="text-5xl text-first-600 font-semibold">Meet the Owner</h3>
+                <p class="mt-2 text-xl font-bold text-first-400">Mastom</p>
                 <p class="mt-4 text-lg">
-                    <span class="text-lime-600">Tomskut's</span> Barberhouse was founded by <span class="text-lime-600">Mastom</span>, a passionate barber with nearly <span class="font-semibold">8 Years</span> of experience in the industry.
+                    <span class="text-first-600">Tomskut's</span> Barberhouse was founded by <span class="text-first-600">Mastom</span>, a passionate barber with nearly <span class="font-semibold">8 Years</span> of experience in the industry.
                 </p>
                 <p class="mt-4 text-lg">
                     For the latest updates and behind-the-scenes looks at his work, follow him on 
-                    <a href="https://instagram.com/mastomsekuts" target="_blank" class="text-lime-400 underline hover:text-lime-300">Instagram</a>.
+                    <a href="https://instagram.com/mastomsekuts" target="_blank" class="text-first-400 underline hover:text-first-300">Instagram</a>.
                 </p>
                 <div class="mt-8">
                     <p class="text-lg italic text-gray-200">"<span id="quote"></span>"</p>
                     <p class="mt-2 text-sm text-gray-400">- Mastom</p>
                 </div>
                 <div class="mt-8">
-                    <a href="about.html#history" class="inline-block bg-lime-600 hover:text-lime-600 border-lime-600 border-[3px] hover:bg-white text-white font-semibold py-3 px-6 rounded-full transition">
+                    <a href="about.html#history" class="inline-block bg-first-600 hover:text-first-600 border-first-600 border-[3px] hover:bg-white text-white font-semibold py-3 px-6 rounded-full transition">
                         Discover More
                     </a>
                 </div>
@@ -142,15 +184,15 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
     <section class="w-full bg-slate-100 py-24 overflow-x-hidden" id="history">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <h2 data-aos="fade-right" class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
-                History of <span class="text-lime-600">Tomskut's</span> Barberhouse
+                History of <span class="text-first-600">Tomskut's</span> Barberhouse
             </h2>
             <div class="lg:px-28 pt-10 flex lg:flex-row flex-col-reverse items-center gap-10">
                 <div data-aos="fade-left" data-aos-delay="400" class="lg:w-1/2 p-6">
                     <p class="text-lg text-gray-700 leading-relaxed">
-                        <span class="text-lime-600">Tomskut's</span> Barberhouse was founded in <span class="font-semibold">2019</span> in the heart of <span class="font-semibold">Pemalang</span>, originally located at Perum Griya Mulyoharjo Permai and now at <span class="text-lime-600">Ruko perum Griya Taman mulia</span>.
+                        <span class="text-first-600">Tomskut's</span> Barberhouse was founded in <span class="font-semibold">2019</span> in the heart of <span class="font-semibold">Pemalang</span>, originally located at Perum Griya Mulyoharjo Permai and now at <span class="text-first-600">Ruko perum Griya Taman mulia</span>.
                     </p>
                     <p class="text-lg text-gray-700 mt-4 leading-relaxed">
-                        <span class="text-lime-600">Tomskut</span> mission is to provide quality <span class="font-semibold">haircut</span>, great service, and a <span class="font-semibold">relaxing</span> atmosphere for all our clients, making us one of the most <span class="font-semibold">distinctive</span> and <span class="font-semibold">trusted</span> barbershops for the people of <span class="font-semibold">Pemalang</span> .
+                        <span class="text-first-600">Tomskut</span> mission is to provide quality <span class="font-semibold">haircut</span>, great service, and a <span class="font-semibold">relaxing</span> atmosphere for all our clients, making us one of the most <span class="font-semibold">distinctive</span> and <span class="font-semibold">trusted</span> barbershops for the people of <span class="font-semibold">Pemalang</span> .
                     </p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200"  class="lg:w-1/2 w-full flex justify-center">
@@ -163,30 +205,30 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
     <section class="w-full bg-stone-100 py-24 overflow-x-hidden" id="barbers">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <h2 data-aos="fade-down" class="text-center lg:text-6xl text-4xl text-black font-semibold pb-12 font-[Anton]">
-                Meet <span class="text-lime-600">Tomskut's</span> Barbers
+                Meet <span class="text-first-600">Tomskut's</span> Barbers
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
                 <a data-aos="flip-right" data-aos-delay="100" href="https://instagram.com/mastomsekuts" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/owner.jpg" alt="Barber 2" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
-                    <h4 class="text-xl text-lime-600 font-semibold">Mastom</h4>
+                    <h4 class="text-xl text-first-600 font-semibold">Mastom</h4>
                     <p class="text-gray-600 mt-2">
-                        With over <span class="font-semibold">8 years</span> of experience, <span class="text-lime-600">Mastom</span> is known for their <span class="font-semibold">precision</span> and attention to detail. They specialize in <span class="font-semibold">modern haircut</span> and <span class="font-semibold">classic style</span>.
+                        With over <span class="font-semibold">8 years</span> of experience, <span class="text-first-600">Mastom</span> is known for their <span class="font-semibold">precision</span> and attention to detail. They specialize in <span class="font-semibold">modern haircut</span> and <span class="font-semibold">classic style</span>.
                     </p>
                 </a>
                 
                 <a data-aos="flip-right" data-aos-delay="300" href="https://instagram.com/alvin.fatihin" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/barbers2.jpg" alt="Barber 3" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
-                    <h4 class="text-xl text-lime-600 font-semibold">Alvin Fatihin</h4>
+                    <h4 class="text-xl text-first-600 font-semibold">Alvin Fatihin</h4>
                     <p class="text-gray-600 mt-2">
-                        With a passion for grooming, <span class="text-lime-600">Alvin</span> combines technical <span class="font-semibold">skill</span> with a relaxed, <span class="font-semibold">friendly vibe</span> that ensures every client feels at ease.
+                        With a passion for grooming, <span class="text-first-600">Alvin</span> combines technical <span class="font-semibold">skill</span> with a relaxed, <span class="font-semibold">friendly vibe</span> that ensures every client feels at ease.
                     </p>
                 </a>
                 
                 <a data-aos="flip-right" data-aos-delay="500" href="" class="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl hover:scale-105 cursor-pointer">
                     <img src="storage/barbers1.jpg" alt="Barber 1" class="rounded-full w-32 h-32 mx-auto object-cover mb-4">
-                    <h4 class="text-xl text-lime-600 font-semibold">Jati Aditya</h4>
+                    <h4 class="text-xl text-first-600 font-semibold">Jati Aditya</h4>
                     <p class="text-gray-600 mt-2">
-                        <span class="text-lime-600">Jati</span> is a passionate <span class="font-semibold">new</span> barber, bringing creativity and energy to every cut. Driven to <span class="font-semibold">grow</span>, he ensures clients leave looking and feeling their <span class="font-semibold">best</span>.
+                        <span class="text-first-600">Jati</span> is a passionate <span class="font-semibold">new</span> barber, bringing creativity and energy to every cut. Driven to <span class="font-semibold">grow</span>, he ensures clients leave looking and feeling their <span class="font-semibold">best</span>.
                     </p>
                 </a>                
             </div>
@@ -221,7 +263,7 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
     }
 }">
     <div class="shrink-0 lg:col-span-2 flex items-center lg:text-3xl text-xl lg:font-semibold font-serif justify-self-center w-full max-w-xs flex-col">
-        <a href="index.html" class="flex text-lime-600 items-center">
+        <a href="index.html" class="flex text-first-600 items-center">
             <img src="storage/tomskut.png" class="w-20" alt="Tomskut Logo">
         </a>
         <p class="text-gray-600 lg:text-sm text-xs font-sans text-center">
@@ -236,7 +278,7 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                 <ul class="pt-2 text-gray-600 space-y-1 lg:text-sm text-xs">
                     <template x-for="link in items" :key="link.text">
                         <li>
-                            <a :href="link.url" class="hover:text-lime-600" x-text="link.text"></a>
+                            <a :href="link.url" class="hover:text-first-600" x-text="link.text"></a>
                         </li>
                     </template>
                 </ul>
@@ -268,7 +310,7 @@ class="fixed w-full top-0 z-40 transition duration-150 shadow-xl"
                 >
                     <template x-for="link in items" :key="link.text">
                         <li>
-                            <a :href="link.url" class="focus:text-lime-600" x-text="link.text"></a>
+                            <a :href="link.url" class="focus:text-first-600" x-text="link.text"></a>
                         </li>
                     </template>
                 </ul>
